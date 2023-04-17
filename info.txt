@@ -1,0 +1,235 @@
+1.React is a js library mainly known for its components concept
+
+2.npx create-react-app@latest my-app or use vite
+
+3.Folder str:
+src-main coding here
+public=>index.html file to render 
+
+4.If you want to run a reactjs project then just do npm i to instal all dependenicies no need for 4
+node modules
+
+5.
+Remove src Folder
+create index.js inside src
+ctlr+b->toggle sidebar
+shortcuts=>settings=>keyboard shortcuts
+
+6.
+components=>
+should start with capital letter
+should have some html 
+
+7.Extensions:
+es7 sinppets=>rafce,rfce(for arrow or normal fn)
+prettier=>default formatting tool
+highlight matching tag
+auto rename tag
+customise Extensions in settings.json vscode
+
+8.NOTE:After react v17 no need for writing import React from 'react'
+
+9.two ways to make a element in a component:
+
+using jsx:
+ const Greeting = () => {
+  return (
+     <div><h1>hello</h1></div>
+     )
+ }
+
+using React.createElement(,,) 1st para-html element,2nd -props,3rd-what is inside the element:
+
+const Greeting = () => {
+  return React.createElement('div',{},React.createElement('h1',{},'Hello world'))
+   
+}
+
+10.JSX rules:
+-In one componenent only one element should be returned 
+so everything should be wither wrapped in one wrapper Like
+<div></div> or <article></article> or <section></section> or <React.Fragment></React.Fragment> or
+<>/</>
+-camelCase is followed and ex label for is called label htmlfor
+
+11.Commands:
+-alt+up/down arrow => to change line pos up or down 
+-alt+click => for multiple cursor alt + click on the otehr place where u also want to wrote 
+and keep doing that until all places are selected and then start writing
+
+12.no class in react its called className
+
+13.Element which do not closing tag must self close it or else will get error
+
+14.No need for paranthesis for return like return() no need to do that 
+just write return soemthingtoreturn 
+
+15.Nest componenents:
+
+const Greeting = () => {
+  return (
+    <>
+    <Person/> //Nested componenent
+    <Msg/> //Nested componenent
+    </>
+  )
+}
+
+const Person = () => {
+  return (
+    <h1>Aamina Sayeed</h1>
+  )
+}
+
+const Msg=()=>{
+  return <p>Hello Weirdo!!!</p>
+}
+
+export default Greeting
+
+
+16.Images
+
+image-external-copy address and paste in src of img tag 
+image-local-public folder-less performant no optimisation
+image-local-src folder-bteer dol for asssests 
+since under the hood they get optimised
+
+17.CSS IN JSX:
+
+using style={{}}
+ex:const Author=()=>{
+ 
+ return  <h4 style={{color:'#282497',fontSize:'0.75rem',marginTop:'0.5rem'}}>
+ Peter Attia MD</h4>
+}
+
+or style{obj}
+
+ex:
+
+const Author=()=>{
+  const headingstyles={
+    color:'#282497',
+    fontSize:'0.75rem',
+    marginTop:'0.5rem'
+  }
+ return  <h4 style={headingstyles}>
+ Peter Attia MD</h4>
+}
+
+-just passing js object in style style syntax is same no double curls
+we have double curls here as we are passing a js object in style
+
+<h4 style={{color:'617d98',fontSize:'0.75rem',marginTop:'0.5rem'}}>
+
+-camelCase bcpz key -value pairs in objects also values are in strings coz this is an object and
+commas here instead of ; bocz again this is an object not css file like syntax
+
+18.Inline css has more pref than css file
+
+19.{} in JSX means we are going back to vanilla js
+
+-value must be expression/var like {title} or {title.toUpperCase()} must return a value
+
+- not a stmt like {let x=6 }
+
+
+20.Props:to make site dymanic -easily replaceable sites so content can be replaced depending on 
+type of website
+-this way we can make site templates and change content according to client
+-Pass object from here 
+
+const BookList=()=>{
+  return <section className='book-list'>
+    <Book title={title} author={author.toUpperCase()} image={image}/>
+    <Book title={title} author={author.toUpperCase()} image={image}/>
+    <Book title={title} author={author.toUpperCase()} image={image}/>
+    <Book title={title} author={author.toUpperCase()} image={image}/>
+  </section>
+}
+
+-Access it here using props.name =>props is an object with key-value pairs passed above
+-If we do not send anything nothing will be rendered
+
+const Book=(props)=>{  //passing props object as parameter
+  console.log(props)
+  return (
+  <article className='book'>
+    
+   <img src={props.image} alt={props.title} />
+   <h2>{props.title}</h2>
+   <h4 >{props.author}</h4>
+  
+  </article>
+)}
+
+
+21.multiple ways to access props
+
+1.Thru destructuring for simple use:
+
+-Instead of doing props.name etc everytime we can just destructure the props object and get the
+properties directly
+
+ex:const Book=(props)=>{
+  const {image,title,author}=props //destructuring
+  return (
+  <article className='book'>
+    
+   <img src={image} alt={title} /> //direct access
+   <h2>{title}</h2>
+   <h4 >{author}</h4>
+  
+  </article>
+)}
+
+
+
+
+2.Just pass the keys direclty instead of props as parameter in components:
+we pass the keys in object so we do not have to write one more line as 
+const {image,title,author}=props line
+
+const Book=({image,title,author})=>{
+  return (
+  <article className='book'>
+    
+   <img src={image} alt={title} />
+   <h2>{title}</h2>
+   <h4 >{author}</h4>
+  
+  </article>
+)}
+
+22.Children props:
+-mainly used for context api 
+-this is used when we want certain componens to diplay or have certian prop properties
+ not all componenents
+
+const BookList=()=>{
+  return <section className='book-list'>
+    <Book title={firstBook.title} author={firstBook.author.toUpperCase()} image={firstBook.image}/>
+    <Book title={secondBook.title} author={secondBook.author.toUpperCase()} image={secondBook.image}>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dolor ipsum animi laudantium aliquam labore illo repellat, voluptate corrupti inventore.</p> 
+    <button>Click me</button> //here we are adding content b/w <Book>jhhf</Book> like this which 
+    will be rendered when calling children 
+    </Book>
+   
+  </section>
+}
+
+
+const Book=({image,title,author,children})=>{ //passing children here
+  return (
+  <article className='book'>
+    
+    <img src={image} alt={title} />
+    <h2>{title}</h2>
+    <h4 >{author}</h4>
+    {children} //acess using {children}
+  </article>
+)}
+
+
+23.Cannot directly display object iterate over the properties and display in JSX/React

@@ -1,0 +1,61 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+    background:#f9f4f4;
+    color:rgb(246, 114, 114);
+}
+
+.book-list{
+    width: 80vw;
+    max-width: 1170px;
+    margin:5rem auto;
+    display: grid;
+    gap: 2rem;
+    /* align-items: start; */
+}
+
+
+.book img{
+width: 75%;
+height:75%;
+object-fit: cover;
+}
+
+
+@media screen and (min-width:758px){
+    .book-list{
+        grid-template-columns: repeat(3,1fr); /*grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;", you could write "grid-template-columns: repeat(8, 1fr);" to achieve the same result.*/
+    }
+}
+
+.book{
+    
+    background: #5e5988;
+    background-color:rgb(238, 238, 238);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center; 
+    color: rgb(43, 42, 69);
+    
+}
+
+.book h2{
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+
+.book h4{
+    
+        color:#282497;
+        font-size:0.75rem;
+        margin-top:0.5rem;
+      
+}
+
