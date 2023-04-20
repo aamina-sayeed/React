@@ -42,7 +42,7 @@ object-fit: cover;
     padding: 2rem;
     text-align: center; 
     color: rgb(43, 42, 69);
-    
+    position: relative;
 }
 
 .book h2{
@@ -53,9 +53,28 @@ object-fit: cover;
 
 .book h4{
     
-        color:#282497;
+        color: #040351;
         font-size:0.75rem;
         margin-top:0.5rem;
       
 }
 
+.number{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.75rem;
+    font-size :1rem;
+    border-top-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    color:white;
+    background-color: #c35600;
+}
+
+h1{
+    text-align: center;
+    margin-top: 4rem;
+    text-transform: capitalize;
+    /* color:#c35600; */
+    color: #040351;
+}
